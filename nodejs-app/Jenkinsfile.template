@@ -31,7 +31,12 @@ pipeline {
           timeout(time: 60, unit: 'SECONDS')
         }
         pipeline {
-        agent { label 'nodejs-app' }
+  agent { label 'nodejs-app' }
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '2'))
+    
+  }
+  
         input {
           message "Should we deploy?"
           submitter "mfnelson"
@@ -42,5 +47,4 @@ pipeline {
       }
     }
   }
-}
 }
