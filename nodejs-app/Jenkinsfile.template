@@ -32,15 +32,6 @@ pipeline {
         }
         pipeline {
   agent { label 'nodejs-app' }
-  options {
-    buildDiscarder(logRotator(numToKeepStr: '2'))
-    post {
-      aborted {
-        echo "Why didn't you push my button?"
-      }
-    }
-  }
-  
         input {
           message "Should we deploy?"
           submitter "mfnelson"
