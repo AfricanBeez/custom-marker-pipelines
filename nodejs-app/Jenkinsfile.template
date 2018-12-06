@@ -28,11 +28,13 @@ pipeline {
         branch 'master'
       }
       options {
-        timeout(time: 30, unit: 'SECONDS') 
-      }
-      input {
-        message "Should we continue?"
-      }
+          timeout(time: 60, unit: 'SECONDS') 
+        }
+        input {
+          message "Should we deploy?"
+          submitter "asumfnelson"
+          submitterParameter "APPROVER"
+        }
       steps {
         echo "Continuing with deployment"
       }
